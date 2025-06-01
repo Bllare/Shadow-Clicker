@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainGweGzA.ui'
+## Form generated from reading UI file 'mainBFzoGl.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.6.1
 ##
@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(518, 543)
+        MainWindow.resize(528, 543)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
@@ -184,7 +184,7 @@ class Ui_MainWindow(object):
         self.groupBox_repeat.setObjectName(u"groupBox_repeat")
         self.verticalLayout_3 = QVBoxLayout(self.groupBox_repeat)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(-1, 0, -1, 0)
+        self.verticalLayout_3.setContentsMargins(-1, 0, -1, 8)
         self.layout_repeat = QHBoxLayout()
         self.layout_repeat.setObjectName(u"layout_repeat")
         self.radioButton_repeat = QRadioButton(self.groupBox_repeat)
@@ -224,7 +224,7 @@ class Ui_MainWindow(object):
         self.groupBox_cursorPosition = QGroupBox(self.centralwidget)
         self.groupBox_cursorPosition.setObjectName(u"groupBox_cursorPosition")
         self.horizontalLayout_4 = QHBoxLayout(self.groupBox_cursorPosition)
-        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setSpacing(5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(-1, 0, -1, 0)
         self.radioButton_currentLocation = QRadioButton(self.groupBox_cursorPosition)
@@ -352,7 +352,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 518, 22))
+        self.menubar.setGeometry(QRect(0, 0, 528, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
