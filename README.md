@@ -2,7 +2,7 @@
 
 Shadow Clicker is an advanced Windows auto clicker that can click inside any application window **without moving your mouse**. Perfect for automation tasks, gaming, or any repetitive clicking jobs — all controlled through a sleek PySide6 GUI.
 
-[⬇️ Download Shadow Clicker](https://github.com/Bllare/Shadow-Clicker/releases/latest/download/Shadow.Clicker.exe)
+[⬇️ Download Shadow Clicker](https://github.com/Bllare/Shadow-Clicker/releases/latest/download/Shadow-Clicker.exe)
 
 ---
 
