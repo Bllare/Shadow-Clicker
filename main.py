@@ -6,7 +6,7 @@ import pyautogui
 import win32api
 import win32gui
 from PySide6.QtWidgets import QApplication, QMainWindow
-from PySide6.QtCore import QTimer, QThread, Signal
+from PySide6.QtCore import QTimer, QThread, Signal, QElapsedTimer
 from PySide6.QtGui import QIcon
 from ui import Ui_MainWindow
 from clicker import MouseController
@@ -79,6 +79,8 @@ class ClickThread(QThread):
             click_method = send_click_current
 
         self.running = True
+        timer = QElapsedTimer()
+        timer.start()
 
         def should_continue():
             return self.running and (self.click_count <= self.repeat if self.is_repeat else True)
@@ -87,7 +89,14 @@ class ClickThread(QThread):
             click_method()
             if self.click_type == "double":
                 click_method()
-            time.sleep(self.delay / 1000)
+
+
+            #time.sleep(self.delay / 1000)
+            timer.restart()
+            while timer.elapsed() < self.delay:
+                if not self.running:
+                    return
+                #self.msleep(10) 
 
     def stop(self):
         self.running = False
