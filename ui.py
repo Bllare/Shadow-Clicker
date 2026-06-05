@@ -15,7 +15,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGroupBox,
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame, QGroupBox,
     QHBoxLayout, QLabel, QMainWindow, QMenuBar,
     QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
     QSpinBox, QStatusBar, QVBoxLayout, QWidget)
@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(528, 543)
+        MainWindow.resize(528, 640)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
@@ -221,6 +221,42 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.layout_clickerOptionsAndRepeat)
 
+        self.layout_holdAndMode = QHBoxLayout()
+        self.layout_holdAndMode.setObjectName(u"layout_holdAndMode")
+
+        self.groupBox_holdSettings = QGroupBox(self.centralwidget)
+        self.groupBox_holdSettings.setObjectName(u"groupBox_holdSettings")
+        self.horizontalLayout_hold = QHBoxLayout(self.groupBox_holdSettings)
+        self.horizontalLayout_hold.setObjectName(u"horizontalLayout_hold")
+        self.horizontalLayout_hold.setContentsMargins(-1, 0, -1, 0)
+        self.checkBox_hold = QCheckBox(self.groupBox_holdSettings)
+        self.checkBox_hold.setObjectName(u"checkBox_hold")
+        self.horizontalLayout_hold.addWidget(self.checkBox_hold)
+        self.spinBox_hold = QSpinBox(self.groupBox_holdSettings)
+        self.spinBox_hold.setObjectName(u"spinBox_hold")
+        self.spinBox_hold.setMinimum(0)
+        self.spinBox_hold.setMaximum(10000)
+        self.spinBox_hold.setValue(0)
+        self.spinBox_hold.setSuffix(" ms")
+        self.horizontalLayout_hold.addWidget(self.spinBox_hold)
+        self.layout_holdAndMode.addWidget(self.groupBox_holdSettings)
+
+        self.groupBox_hotkeyMode = QGroupBox(self.centralwidget)
+        self.groupBox_hotkeyMode.setObjectName(u"groupBox_hotkeyMode")
+        self.horizontalLayout_mode = QHBoxLayout(self.groupBox_hotkeyMode)
+        self.horizontalLayout_mode.setObjectName(u"horizontalLayout_mode")
+        self.horizontalLayout_mode.setContentsMargins(-1, 0, -1, 0)
+        self.radioButton_toggle = QRadioButton(self.groupBox_hotkeyMode)
+        self.radioButton_toggle.setObjectName(u"radioButton_toggle")
+        self.radioButton_toggle.setChecked(True)
+        self.horizontalLayout_mode.addWidget(self.radioButton_toggle)
+        self.radioButton_trigger = QRadioButton(self.groupBox_hotkeyMode)
+        self.radioButton_trigger.setObjectName(u"radioButton_trigger")
+        self.horizontalLayout_mode.addWidget(self.radioButton_trigger)
+        self.layout_holdAndMode.addWidget(self.groupBox_hotkeyMode)
+
+        self.verticalLayout_2.addLayout(self.layout_holdAndMode)
+
         self.groupBox_cursorPosition = QGroupBox(self.centralwidget)
         self.groupBox_cursorPosition.setObjectName(u"groupBox_cursorPosition")
         self.horizontalLayout_4 = QHBoxLayout(self.groupBox_cursorPosition)
@@ -285,6 +321,57 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addWidget(self.groupBox_cursorPosition)
+
+        self.groupBox_undetect = QGroupBox(self.centralwidget)
+        self.groupBox_undetect.setObjectName(u"groupBox_undetect")
+        self.verticalLayout_undetect = QVBoxLayout(self.groupBox_undetect)
+        self.verticalLayout_undetect.setObjectName(u"verticalLayout_undetect")
+        self.verticalLayout_undetect.setContentsMargins(-1, 0, -1, 0)
+
+        self.layout_shake = QHBoxLayout()
+        self.layout_shake.setObjectName(u"layout_shake")
+        self.checkBox_shake = QCheckBox(self.groupBox_undetect)
+        self.checkBox_shake.setObjectName(u"checkBox_shake")
+        self.layout_shake.addWidget(self.checkBox_shake)
+        self.spinBox_shakeMin = QSpinBox(self.groupBox_undetect)
+        self.spinBox_shakeMin.setObjectName(u"spinBox_shakeMin")
+        self.spinBox_shakeMin.setMinimum(0)
+        self.spinBox_shakeMin.setMaximum(50)
+        self.spinBox_shakeMin.setValue(0)
+        self.spinBox_shakeMin.setSuffix(" px")
+        self.layout_shake.addWidget(self.spinBox_shakeMin)
+        self.spinBox_shakeMax = QSpinBox(self.groupBox_undetect)
+        self.spinBox_shakeMax.setObjectName(u"spinBox_shakeMax")
+        self.spinBox_shakeMax.setMinimum(1)
+        self.spinBox_shakeMax.setMaximum(50)
+        self.spinBox_shakeMax.setValue(10)
+        self.spinBox_shakeMax.setSuffix(" px")
+        self.layout_shake.addWidget(self.spinBox_shakeMax)
+
+        self.layout_delay = QHBoxLayout()
+        self.layout_delay.setObjectName(u"layout_delay")
+        self.checkBox_randomDelay = QCheckBox(self.groupBox_undetect)
+        self.checkBox_randomDelay.setObjectName(u"checkBox_randomDelay")
+        self.layout_delay.addWidget(self.checkBox_randomDelay)
+        self.spinBox_delayMin = QSpinBox(self.groupBox_undetect)
+        self.spinBox_delayMin.setObjectName(u"spinBox_delayMin")
+        self.spinBox_delayMin.setMinimum(0)
+        self.spinBox_delayMin.setMaximum(1000)
+        self.spinBox_delayMin.setValue(0)
+        self.spinBox_delayMin.setSuffix(" ms")
+        self.layout_delay.addWidget(self.spinBox_delayMin)
+        self.spinBox_delayMax = QSpinBox(self.groupBox_undetect)
+        self.spinBox_delayMax.setObjectName(u"spinBox_delayMax")
+        self.spinBox_delayMax.setMinimum(1)
+        self.spinBox_delayMax.setMaximum(1000)
+        self.spinBox_delayMax.setValue(50)
+        self.spinBox_delayMax.setSuffix(" ms")
+        self.layout_delay.addWidget(self.spinBox_delayMax)
+
+        self.verticalLayout_undetect.addLayout(self.layout_shake)
+        self.verticalLayout_undetect.addLayout(self.layout_delay)
+
+        self.verticalLayout_2.addWidget(self.groupBox_undetect)
 
         self.layout_Setup = QVBoxLayout()
         self.layout_Setup.setObjectName(u"layout_Setup")
@@ -387,12 +474,20 @@ class Ui_MainWindow(object):
         self.radioButton_repeat.setText(QCoreApplication.translate("MainWindow", u"Repeat", None))
         self.label_repeat.setText(QCoreApplication.translate("MainWindow", u"times", None))
         self.radioButton_repeatUntilStopped.setText(QCoreApplication.translate("MainWindow", u"Repeat until stopped", None))
+        self.groupBox_holdSettings.setTitle(QCoreApplication.translate("MainWindow", u"Hold settings", None))
+        self.checkBox_hold.setText(QCoreApplication.translate("MainWindow", u"Hold", None))
+        self.groupBox_hotkeyMode.setTitle(QCoreApplication.translate("MainWindow", u"Hotkey mode", None))
+        self.radioButton_toggle.setText(QCoreApplication.translate("MainWindow", u"Toggle", None))
+        self.radioButton_trigger.setText(QCoreApplication.translate("MainWindow", u"Trigger (hold)", None))
         self.groupBox_cursorPosition.setTitle(QCoreApplication.translate("MainWindow", u"Cursor position", None))
         self.radioButton_currentLocation.setText(QCoreApplication.translate("MainWindow", u"Current location", None))
         self.radioButton_customLocation.setText("")
         self.pushButton_pickLocation.setText(QCoreApplication.translate("MainWindow", u"Pick location", None))
         self.lable_x.setText(QCoreApplication.translate("MainWindow", u"X", None))
         self.label_y.setText(QCoreApplication.translate("MainWindow", u"Y", None))
+        self.groupBox_undetect.setTitle(QCoreApplication.translate("MainWindow", u"Undetect", None))
+        self.checkBox_shake.setText(QCoreApplication.translate("MainWindow", u"Mouse shake", None))
+        self.checkBox_randomDelay.setText(QCoreApplication.translate("MainWindow", u"Random delay", None))
         self.pushButton_start.setText(QCoreApplication.translate("MainWindow", u"Start (F8)", None))
         self.pushButton_stop.setText(QCoreApplication.translate("MainWindow", u"Stop (F8)", None))
         self.pushButton_setHotkey.setText(QCoreApplication.translate("MainWindow", u"Set Hotkey", None))
@@ -400,4 +495,3 @@ class Ui_MainWindow(object):
         self.label_info.setText(QCoreApplication.translate("MainWindow", u"Shadow Clicker", None))
         self.label_github.setText(QCoreApplication.translate("MainWindow", u"Github : Bllare", None))
     # retranslateUi
-
