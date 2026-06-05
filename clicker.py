@@ -73,24 +73,31 @@ class MouseController:
         )
         return INPUT(type=INPUT_MOUSE, mi=mi)
 
-    def click(self, x, y, button='left'):
+    def click(self, x, y, button='left', hold=False, hold_duration=0):
         down_flag, up_flag = self._get_button_flags(button)
         inputs = [
             self._create_mouse_input(x, y, MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE),
             self._create_mouse_input(x, y, down_flag),
-            self._create_mouse_input(x, y, up_flag)
         ]
         for i in inputs:
             ctypes.windll.user32.SendInput(1, ctypes.byref(i), ctypes.sizeof(INPUT))
 
-    def click_current_position(self, button='left'):
+        if hold:
+            ctypes.windll.kernel32.Sleep(int(hold_duration))
+
+        up_input = self._create_mouse_input(x, y, up_flag)
+        ctypes.windll.user32.SendInput(1, ctypes.byref(up_input), ctypes.sizeof(INPUT))
+
+    def click_current_position(self, button='left', hold=False, hold_duration=0):
         down_flag, up_flag = self._get_button_flags(button)
-        inputs = [
-            self._create_click_input(down_flag),
-            self._create_click_input(up_flag)
-        ]
-        for i in inputs:
-            ctypes.windll.user32.SendInput(1, ctypes.byref(i), ctypes.sizeof(INPUT))
+        down_input = self._create_click_input(down_flag)
+        ctypes.windll.user32.SendInput(1, ctypes.byref(down_input), ctypes.sizeof(INPUT))
+
+        if hold:
+            ctypes.windll.kernel32.Sleep(int(hold_duration))
+
+        up_input = self._create_click_input(up_flag)
+        ctypes.windll.user32.SendInput(1, ctypes.byref(up_input), ctypes.sizeof(INPUT))
 
 # Example usage
 if __name__ == "__main__":
