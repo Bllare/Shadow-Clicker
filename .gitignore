@@ -9,3 +9,5 @@ build
 dist
 icon.ico
 main.spec
+.vscode
+config.json
